@@ -1,9 +1,17 @@
 {
-  "name": "TassleList",
+  "name": "TaskList",
   "version": "0.0.0",
+  "authors": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib"
+  ],
   "dependencies": {
-    "jquery": "~2.0.3",
-    "underscore": "~1.8.3",
-    "backbone": "~1.0.0"
+    "angular": "~1.2.18",
+    "angular-route": "~1.2.18",
+    "angular-mocks": "~1.2.18"
   }
 }

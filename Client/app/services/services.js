@@ -1,37 +1,47 @@
 angular.module('tassleList.services', [])
 
 .factory('Tasks', function ($http) {
+  // Your code here
 
-  var addTask = function(task){
-    return $http({
-      method: 'POST',
-      url: 'api/tasks'
-    })
-    .then(function(resp){
-      return resp.data;
-    });
-  }
-
-  var taskList = function(){
+  var getAll = function () {
     return $http({
       method: 'GET',
-      url: 'api/tasks'
+      url: '/api/tasks'
     })
-    .then(function(resp){
+    .then(function (resp) {
+      // console.log("resp:  inside of getAll", resp);
       return resp.data;
     });
   };
 
-  return {
-    addTask: addTask
-    taskLis: taskList
-  }
+  var addTask = function (task) {
+    console.log('task', task)
+    return $http({
+      method: 'POST',
+      url: '/api/tasks',
+      data: task
+    })
+    .then(function (resp){
+      return resp.data;
+    })
+  };
 
-});
+  return {
+    getAll: getAll,
+    addTask: addTask
+  };
+})
+
 
 
 .factory('Auth', function ($http, $location, $window) {
-
+  // Don't touch this Auth service!!!
+  // it is responsible for authenticating our user
+  // by exchanging the user's username and password
+  // for a JWT from the server
+  // that JWT is then stored in localStorage as 'com.shortly'
+  // after you signin/signup open devtools, click resources,
+  // then localStorage and you'll see your token from the server
   var signin = function (user) {
     return $http({
       method: 'POST',
@@ -62,6 +72,7 @@ angular.module('tassleList.services', [])
     $window.localStorage.removeItem('com.shortly');
     $location.path('/signin');
   };
+
 
   return {
     signin: signin,

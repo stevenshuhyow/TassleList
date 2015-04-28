@@ -1,11 +1,32 @@
-angular.module('tassleList.tasks',[])
+angular.module('tassleList.tasks', [])
 
-.controller('tassleListController', function ($scope, Tasks){
+.controller('TasksController', function ($scope, $location, Tasks) {
+
+
+  $scope.data = {};
+  $scope.user = {date: new Date()};
+
+  $scope.populate = function () {
+    Tasks.getAll()
+    .then(function (tasks) {
+      $scope.data.tasks = tasks;
+      console.log($scope.data.tasks)
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  };
+
+  $scope.populate();
 
   $scope.addTask = function(){
-    $scopes.addTask($scope.task);
-
-
+    console.log('inside of addTask')
+    Tasks.addTask($scope.user)
+    .then(function(){
+      $location.path('/task');
+    })
+    .catch(function(error){
+      console.log(error);
+    })
   }
-
-})
+});

@@ -19,6 +19,11 @@ angular.module('tassleList', [
       controller: 'TasksController',
       authenticate: true,
     })
+    .when('/finishedTasks', {
+      templateUrl: 'app/finishedTasks/finishedTasks.html',
+      controller: 'FinishedTasksController',
+      authenticate: true
+    })
     .otherwise({
       redirectTo: '/tasks'
     });

@@ -29,4 +29,10 @@ angular.module('tassleList.tasks', [])
       console.log(error);
     })
   }
+
+  $scope.finishedTask = function(index){
+    var value = $scope.data.tasks[index]._id
+    // var finished = $scope.data.tasks.splice(index,1)
+    Tasks.finishedTasks(value)
+  }
 });

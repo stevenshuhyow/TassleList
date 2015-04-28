@@ -2,6 +2,7 @@ angular.module('tassleList', [
   'tassleList.services',
   'tassleList.tasks',
   'tassleList.auth',
+  'tassleList.finishedTasks',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {

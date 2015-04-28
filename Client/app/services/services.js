@@ -4,12 +4,13 @@ angular.module('tassleList.services', [])
   // Your code here
 
   var getAll = function () {
+    console.log("inside of GetALL")
     return $http({
       method: 'GET',
       url: '/api/tasks'
     })
     .then(function (resp) {
-      // console.log("resp:  inside of getAll", resp);
+      console.log("resp:  inside of getAll", resp);
       return resp.data;
     });
   };
@@ -26,9 +27,23 @@ angular.module('tassleList.services', [])
     })
   };
 
+  var finishedTasks = function(id) {
+    console.log("submitting get request")
+    return $http({
+      method: 'POST',
+      url: '/api/finishedTasks',
+      data: id
+    })
+    .then(function (resp) {
+      console.log("resp:  inside of finishedTasks", resp);
+      return resp.data;
+    });
+  };
+
   return {
     getAll: getAll,
-    addTask: addTask
+    addTask: addTask,
+    finishedTasks: finishedTasks
   };
 })
 

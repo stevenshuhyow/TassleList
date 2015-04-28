@@ -1,12 +1,11 @@
-angular.module('tassleList.finnishedTasks', [])
+angular.module('tassleList.finishedTasks', [])
 
 .controller('FinishedTasksController', function ($scope, $location, Tasks) {
 
   $scope.data = {};
-  $scope.user = {date: Date.now()};
 
   $scope.populate = function () {
-    Tasks.getAll()
+    Tasks.finishedTasks()
     .then(function (tasks) {
       $scope.data.tasks = tasks;
       console.log($scope.data.tasks)

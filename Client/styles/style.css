@@ -10,6 +10,10 @@ a {
   text-decoration: none;
 }
 
+.myclass {
+  background-color: #ccc
+}
+
 h1 {
   font-style: italic;
   margin-bottom: 10px;

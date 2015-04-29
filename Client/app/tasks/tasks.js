@@ -6,6 +6,12 @@ angular.module('tassleList.tasks', [])
   $scope.data = {};
   $scope.user = {date: new Date()};
 
+  $scope.isActive = function (viewLocation) {
+    console.log(viewLocation === $location.path());
+    console.log($location.path())
+      return viewLocation === $location.path();
+  };
+
   $scope.populate = function () {
     Tasks.getAll()
     .then(function (tasks) {
@@ -33,7 +39,14 @@ angular.module('tassleList.tasks', [])
   $scope.finishedTask = function(index){
     var value = $scope.data.tasks[index]
     var finished = $scope.data.tasks.splice(index,1)
-    console.log(value);
     Tasks.finishedTasks({value})
   }
+
+
+  $scope.changeClass = function(){
+    if ($scope.class === "red")
+      $scope.class = "blue";
+    else
+      $scope.class = "red";
+  };
 });

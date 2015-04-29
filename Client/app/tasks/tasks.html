@@ -4,10 +4,10 @@
   <nav class="navigation">
     <ul>
       <li>
-          <a class="selected" href="#/tasks">Tasks</a>
+          <a class="red" href="#/tasks" ng-class="{ active: isActive('#/tasks')}">Tasks</a>
       </li>
        <li>
-          <a href="#/finishedTasks">Finshed Tasks</a>
+          <a href="#/finishedTasks" ng-class="{ active: isActive('/finishedTasks')}">Finshed Tasks</a>
       </li>
     </ul>
   </nav>

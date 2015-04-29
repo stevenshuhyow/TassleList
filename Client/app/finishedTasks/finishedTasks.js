@@ -2,10 +2,15 @@ angular.module('tassleList.finishedTasks', [])
 
 .controller('FinishedTasksController', function ($scope, $location, Tasks) {
 
+  $scope.isActive = function (viewLocation) {
+    console.log(viewLocation === $location.path())
+      return viewLocation === $location.path();
+  };
+
+
   $scope.data = {};
 
   $scope.finishedPopulate = function() {
-    console.log(Tasks);
     Tasks.populate()
     .then(function (tasks) {
       $scope.data.tasks = tasks;

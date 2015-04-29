@@ -42,20 +42,42 @@ module.exports = {
   },
 
   populateFinishedTasks: function (req, res, next) {
-    // var findAll = Q.nbind(FinishedTask.find, FinishTask);
-    // console.log('inside of ALLTASKS')
+    console.log("inside of populateFinishedTasks")
+    var findAll = Q.nbind(FinishedTask.find, FinishedTask);
+    console.log('inside of ALLTASKS')
 
-    // findAll({})
-    //   .then(function (tasks) {
-    //     res.json(tasks);
-    //   })
-    //   .fail(function (error) {
-    //     next(error);
-    //   });
+    findAll({})
+      .then(function (tasks) {
+        res.json(tasks);
+      })
+      .fail(function (error) {
+        next(error);
+      });
   },
 
   addFinishedTasks: function (req, res, next){
     var id = req.body.value._id;
+    console.log(req.body)
+
+    var user = "steven";
+    var task = req.body.value.task;
+    var date = req.body.value.date;
+
+    console.log(user, task, date);
+
+    var createTask = Q.nbind(FinishedTask.create, FinishedTask);
+
+    var finishedTask = {
+      user: "steven",
+      task: task,
+      date: date
+    };
+
+    console.log(finishedTask)
+
+    createTask(finishedTask)
+
+
 
     Task.findOneAndRemove({_id: id}, function(err){
       if(err){

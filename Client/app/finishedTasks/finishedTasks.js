@@ -4,8 +4,9 @@ angular.module('tassleList.finishedTasks', [])
 
   $scope.data = {};
 
-  $scope.populate = function () {
-    Tasks.finishedTasks()
+  $scope.finishedPopulate = function() {
+    console.log(Tasks);
+    Tasks.populate()
     .then(function (tasks) {
       $scope.data.tasks = tasks;
       console.log($scope.data.tasks)
@@ -15,6 +16,7 @@ angular.module('tassleList.finishedTasks', [])
     });
   };
 
-  $scope.populate();
+  $scope.finishedPopulate();
 
 })
+

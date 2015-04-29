@@ -31,8 +31,9 @@ angular.module('tassleList.tasks', [])
   }
 
   $scope.finishedTask = function(index){
-    var value = $scope.data.tasks[index]._id
-    // var finished = $scope.data.tasks.splice(index,1)
-    Tasks.finishedTasks(value)
+    var value = $scope.data.tasks[index]
+    var finished = $scope.data.tasks.splice(index,1)
+    console.log(value);
+    Tasks.finishedTasks({value})
   }
 });

@@ -55,12 +55,43 @@ module.exports = {
   },
 
   addFinishedTasks: function (req, res, next){
-    // Task.findOneAndRemove
-    console.log('inside of addFinishedTasks');
-    // var createTask = Q.nbind(Task.create, Task);
-    console.log('TASK LIST------------------',Task)
+    var id = req.body.value._id;
+
+    Task.findOneAndRemove({_id: id}, function(err){
+      if(err){
+        throw (err)
+      }
+      console.log("user deleted")
+    });
+
+    console.log("id id here", id)
+
+    // var finished = req.body;
+
+    // var task = req.body.task;
+    // var date = req.body.date;
+
+    // // var finishedTask = {
+    // //   user: "steven",
+    // //   task: task,
+    // //   date: date
+    // // };
+
+    // console.log(task)
+    // cnosole.log(date)
 
 
+    // var createFinishedTask = Q.bind(FinishedTask.create, FinishedTask)
+
+    // createFinishedTask(finishedTask)
+    // .then(function(createFinishedTask){
+    //   if(createFinishedTask){
+    //     res.json(createFinishedTask);
+    //   }
+    // })
+    // .fail(function (error) {
+    //   next(error);
+    // })
   }
 
 }

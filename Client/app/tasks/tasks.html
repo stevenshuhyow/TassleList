@@ -16,8 +16,7 @@
   <input type='text' ng-model='user.task' placeholder='What to do'/>
     <label>
     <div class="tasks" ng-repeat="tasks in data.tasks | orderBy: date  track by $index" ng-click='finishedTask($index)'>
-      <input type='checkbox' ng-model='checkbox.value1'>
-      {{tasks.user}}: {{ tasks.task }}
+      <div>{{tasks.user}}: {{ tasks.task }} </div>
     </label>
   </div>
 </form>
